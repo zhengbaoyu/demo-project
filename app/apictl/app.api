@@ -1,0 +1,31 @@
+syntax = "v1"
+
+import (
+	"user/demo_user.api"
+)
+
+@server(
+	group: user
+	prefix: /userv1
+)
+service app-api {
+	@doc "用户-注册"
+	@handler RegisterHandler
+	post /register (RegisterUserReq)
+	
+	@doc "用户-登录"
+	@handler LoginHandler
+	post /login (LoginUserReq) returns (LoginUserResp)
+}
+
+@server(
+	group: user
+	prefix: /userv1
+	middleware : Auth //验证中间件
+	jwt: JwtAuth //添加JWT验证
+)
+service app-api {
+	@doc "用户-详情"
+	@handler InfoHandler
+	get /info (UserInfoReq) returns (UserResp)
+}

@@ -1,0 +1,13 @@
+Mysql:
+  DataSource: "opensource:081759a8644cdabc@tcp(mysql11650w.yun.qianxin-inc.cn:11650)/opensource?charset=utf8mb4&parseTime=true&loc=Asia%2fShanghai"
+
+Log:
+  Mode: console
+  Encoding: json
+  Path: ./job/logs
+  Level: info
+
+CronConf:
+  #生产镜像数据
+  User: "0/3 * * * * ?"
+

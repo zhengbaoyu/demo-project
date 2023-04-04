@@ -1,0 +1,17 @@
+Name: app-api
+Host: 0.0.0.0
+Port: 8888
+
+Log:
+  Mode: console
+  Encoding: json
+  Path: ./app/logs
+  Level: info
+
+
+Mysql:
+  DataSource: "pub_xs_ms:fc93f9ccf9a0065f8@tcp(ceshi01.xinhuashe.lfk.qianxin-inc.cn:3306)/opensource?charset=utf8mb4&parseTime=true&loc=Asia%2fShanghai"
+
+JwtAuth:
+  AccessSecret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+  AccessExpire: 64800
