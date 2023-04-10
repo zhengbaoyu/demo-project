@@ -3,10 +3,12 @@ package main
 import (
 	"demo-project/app/internal/config"
 	"demo-project/app/internal/handler"
+	"demo-project/app/internal/middleware"
 	"demo-project/app/internal/svc"
 	"flag"
 	"fmt"
 	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/core/stores/redis"
 	"github.com/zeromicro/go-zero/rest"
 )
 
@@ -25,10 +27,9 @@ func main() {
 	server := rest.MustNewServer(c.RestConf, rest.WithCors())
 	defer server.Stop()
 
-	//全局中间件 解决跨域
-	//server.Use(func(next http.HandlerFunc) http.HandlerFunc {
-	//	return middleware.CorsHandle(next)
-	//})
+	redisConf := redis.RedisConf{Host: ctx.Config.Redis.Host, Pass: ctx.Config.Redis.Pass, Type: ctx.Config.Redis.Type}
+	//全局中间件 限流
+	server.Use(middleware.NewTokenLimiterMiddleware(redisConf).Handle)
 
 	handler.RegisterHandlers(server, ctx)
 

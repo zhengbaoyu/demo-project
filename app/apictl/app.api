@@ -21,7 +21,7 @@ service app-api {
 @server(
 	group: user
 	prefix: /userv1
-	middleware : Auth //验证中间件
+	middleware : CheckPath // 路由中间件声明
 	jwt: JwtAuth //添加JWT验证
 )
 service app-api {

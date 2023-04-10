@@ -8,6 +8,10 @@ Log:
   Path: ./app/logs
   Level: info
 
+Redis:
+  Host: 10.95.54.204:6379
+  Pass: RZna3HvT9qz6SCKb
+  Type: node
 
 Mysql:
   DataSource: "pub_xs_ms:fc93f9ccf9a0065f8@tcp(ceshi01.xinhuashe.lfk.qianxin-inc.cn:3306)/opensource?charset=utf8mb4&parseTime=true&loc=Asia%2fShanghai"
